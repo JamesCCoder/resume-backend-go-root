@@ -1,0 +1,13 @@
+1. install aws cdk and cli
+    
+    pip install awscli
+    aws configure
+    npm install -g aws-cdk
+
+2. 初始化 AWS CDK 项目
+3. 安装必要的 CDK 依赖
+4. 构建 Go 项目
+5. 创建 Lambda 函数和其他 AWS 资源
+6. 部署 CDK 堆栈
+7. 验证部署
+
