@@ -8,19 +8,22 @@ import (
 )
 
 func main() {
+	env := "development"
+	if len(os.Args) > 1 {
+		env = os.Args[1]
+	}
 
-	
-    env := "development"
-    if len(os.Args) > 1 {
-        env = os.Args[1]
-    }
+	config.LoadConfig(env)
 
-    config.LoadConfig(env)
-    config.ConnectMongoDB()
+	if env == "prod" {
+		config.ConnectDynamoDB()
+	} else {
+		config.ConnectMongoDB()
+	}
 
-    router := routes.SetupRouter()
+	router := routes.SetupRouter()
 
-    router.SetTrustedProxies(nil)
+	router.SetTrustedProxies(nil)
 
-    router.Run(":8085")
+	router.Run(":8085")
 }
